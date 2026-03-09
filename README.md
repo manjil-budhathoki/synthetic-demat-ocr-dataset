@@ -1,140 +1,78 @@
 # Synthetic DEMAT OCR Dataset Generator
 
-This project generates **synthetic DEMAT account documents** that resemble real Nepali Demat account statements.
+A Python-based system that generates synthetic Nepali DEMAT account documents for training OCR and document AI systems.
 
-The generator creates realistic structured documents that can be used to **train and test OCR or document AI systems**.
+## Tech Stack
 
-The pipeline produces:
+- **Python 3.8+** - Core programming language
+- **python-docx** - DOCX document generation and manipulation
+- **pdf2image** - PDF to image conversion
+- **Pillow** - Image processing and manipulation
+- **python-dotenv** - Environment configuration management
 
-* DOCX documents
-* PDF documents
-* PNG images (for OCR input)
-* JSON ground-truth labels
+## System Overview
 
-This allows developers to build **table extraction and structured document recognition systems**.
+This generator creates realistic DEMAT account statements with:
+- Structured document layouts (DOCX, PDF, PNG formats)
+- Ground-truth JSON labels for each document
+- Realistic Nepali financial identifiers (BOID, Citizenship numbers, PAN, etc.)
+- 50 synthetic documents by default (configurable)
 
----
-
-## Example Document
-
-The generated document contains fields such as:
-
-* BOID
-* Name
-* Account Status
-* Gender
-* Date of Birth
-* Citizenship Number
-* PAN Number
-* Contact Number
-* Address
-* Bank Name
-* Account Number
-
-All identifiers follow realistic formats used in Nepal’s capital market system.
-
----
-
-## Project Structure
-
+The pipeline converts documents through multiple formats while maintaining data consistency:
 ```
-synthetic-demat-ocr-dataset/
-
-template/
-    demat_template.docx
-
-output/
-    docx/
-    pdf/
-    images/
-    labels/
-
-src/
-    generator.py
-    template_writer.py
-    pdf_converter.py
-    image_converter.py
-    main.py
+Template DOCX → Customized DOCX → PDF → PNG Images + JSON Labels
 ```
 
----
+## Requirements
 
-## Installation
+Create a `requirements.txt` file with:
 
-Install dependencies:
-
+```txt
+python-docx==1.1.0
+pdf2image==1.16.3
+Pillow==10.1.0
+python-dotenv==1.0.0
 ```
-pip install -r requirements.txt
-```
 
-On Linux you must install LibreOffice and Poppler:
-
-```
+### System Dependencies (Linux)
+```bash
 sudo apt install libreoffice poppler-utils
 ```
 
----
+## Quick Start
 
-## Running the Generator
-
-Navigate to the source directory:
-
+1. Install Python dependencies:
+```bash
+pip install -r requirements.txt
 ```
+
+2. Install system dependencies (Linux only):
+```bash
+sudo apt install libreoffice poppler-utils
+```
+
+3. Run the generator:
+```bash
 cd src
-```
-
-Run the generator:
-
-```
 python main.py
 ```
 
-The system will generate **50 synthetic Demat account documents** by default.
-
----
-
-## Output
-
-The generated dataset will look like this:
+## Output Structure
 
 ```
 output/
-
-pdf/
-    demat_0.pdf
-    demat_1.pdf
-
-images/
-    demat_0_0.png
-    demat_1_0.png
-
-labels/
-    demat_0.json
-    demat_1.json
+├── pdf/          # Generated PDF documents
+├── images/       # PNG images for OCR
+└── labels/       # JSON ground-truth data
 ```
-
-Each document includes a **matching JSON label file**, making the dataset ready for OCR training and evaluation.
-
----
 
 ## Use Cases
 
-This dataset can be used for:
-
-* OCR model training
-* Table extraction experiments
-* Document AI pipelines
-* KYC document parsing research
-* Layout-based NLP models such as LayoutLM
+- OCR model training and evaluation
+- Document AI pipeline development
+- Table extraction experiments
+- KYC document parsing research
 
 ---
 
-## Disclaimer
-
-All generated data is synthetic and does not correspond to any real individuals or financial accounts.
-
----
-
-## Author
-
-Created for experimentation in **OCR and document AI systems**.
+**Note**: All generated data is synthetic and does not correspond to real individuals or accounts.
