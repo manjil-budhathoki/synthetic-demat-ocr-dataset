@@ -1,0 +1,24 @@
+# =========================
+# Python cache files
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Virtual environments
+# =========================
+venv/
+env/
+ENV/
+.venv/
+
+
+
+# =========================
+# Generated dataset output
+# =========================
+output/docx/
+output/pdf/
+output/images/
+output/labels/

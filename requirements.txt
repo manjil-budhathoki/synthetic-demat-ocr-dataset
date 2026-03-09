@@ -1,0 +1,5 @@
+faker
+python-docx
+docx2pdf
+pdf2image
+pillow
